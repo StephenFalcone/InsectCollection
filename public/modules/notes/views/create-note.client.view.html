@@ -1,0 +1,38 @@
+<section data-ng-controller="NotesController" data-ng-init="createPage()">
+	<div class="page-header">
+		<h1>New Field Note</h1>
+	</div>
+
+	<div class="col-md-12">
+		<form name="noteForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+			<fieldset>
+				<div data-ng-show="error" class="alert alert-danger" role="alert">
+					<strong data-ng-bind="error"></strong>
+				</div>
+
+				<div class="form-group" ng-class="{ 'has-error': noteForm.title.$dirty && noteForm.title.$invalid }">
+					<label class="control-label" for="title">Title</label>
+					<div class="controls">
+						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="content">Content</label>
+					<div class="controls">
+						<textarea name="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" ui-tinymce data-ng-model="content"></textarea>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label" for="selectedInsects">Insects noted</label>
+					<select multiple name="selectedInsects" id="selectedInsects" data-ng-model="selectedInsects" data-ng-options="insect.name for insect in insects" class="form-control"></select>
+				</div>
+
+				<div class="form-group text-right">
+					<input type="submit" id="submit" class="btn btn-primary" data-ng-disabled="noteForm.$invalid">
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>

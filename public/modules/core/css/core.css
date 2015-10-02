@@ -1,0 +1,79 @@
+.content .container section[data-ui-view] {
+	padding-top: 50px;
+}
+.undecorated-link:hover {
+	text-decoration: none;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+.ng-invalid.ng-dirty{
+    border-color:#FA787E;
+}
+.ng-valid.ng-dirty{
+    border-color:#78FA89;
+}
+.angular-google-map-container { height: 400px; }
+
+
+section.home .map .col-md-3 {padding-top: 15px;}
+@media (min-width: 992px) {
+	section.home {height: calc(100vh - 50px); min-height: 500px;}
+	section.home .map .col-md-3 {margin: 0; padding: 15px 15px 0; height: calc(100vh - 50px); overflow: auto;}
+	section.home .map {height: calc(100vh - 50px); min-height: 500px; position: absolute; top: 50px; left: 0; right: 0; margin: 0;}
+	section.home .map .col-md-9 {padding: 0;}
+}
+section.home .map .angular-google-map-container {height: calc(100vh - 50px);}
+
+body > footer {margin: 40px 0 30px;}
+body > footer hr {margin: 0 0 40px;}
+
+.thumbnail .caption .p {word-wrap: break-word;}
+
+.angular-google-map .window img {max-height: 250px;}
+.angular-google-map .window p span, .viewMap .window p em {display: block;}
+
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -o-transform: rotate(0);
+	transform: rotate(0);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+	transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+  from {
+    -ms-transform: rotate(0);
+    -moz-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    -o-transform: rotate(0);
+	transform: rotate(0);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+	transform: rotate(360deg);
+  }
+}
+h1 small .glyphicon-refresh, h2 small .glyphicon-refresh {
+	margin-left: 10px;
+	background: #678621;
+	padding: 7px;
+	border-radius: 50px;
+	color: #fff;
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}

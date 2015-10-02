@@ -1,0 +1,47 @@
+.collection .addImage input[type=checkbox] {
+	display: none;
+}
+
+.collection .addImage input[type=checkbox] + label {
+	display: inline-block;
+	padding: 0;
+	position: relative;
+	margin: 15px 0;
+	cursor: pointer;
+}
+.collection .addImage input[type=checkbox] + label img {
+	border-radius: 5px;
+	width: 100%;
+	max-width: 100px;
+	min-height: 100%;
+	-moz-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	-webkit-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+.collection .addImage input[type=checkbox] + label:hover img {
+	opacity: 0.75;
+}
+.collection .addImage input[type=checkbox]:checked + label {
+	width: 100%;
+	display: inline-block;
+	padding: 0;
+}
+.collection .addImage input[type=checkbox]:checked + label img {
+    border-color: green;
+    -webkit-box-shadow: 0 0 10px gray;
+    -moz-box-shadow: 0 0 10px gray;
+    box-shadow: 0 0 10px gray;
+    border: 3px solid white;
+}
+.collection .addImage input[type=checkbox] + label .glyphicon {
+	visibility: hidden;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 1;
+	color: #FFF;
+}
+.collection .addImage input[type=checkbox]:checked + label .glyphicon {
+	visibility: visible;
+}

@@ -1,0 +1,122 @@
+<section data-ng-controller="ProfileController" data-ng-init="findUser()">
+	<div class="page-header">
+		<h1>{{foundUser.info.displayName}} <small>Profile</small>
+			<small data-ng-show="loading"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></small>
+			<span class="pull-right" data-ng-show="user._id == foundUser.info._id">
+				<a class="btn btn-default" data-ng-href="/#!/settings/profile">
+					<i class="glyphicon glyphicon-pencil"></i> Edit
+				</a>
+			</span>
+		</h1>
+	</div>
+
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<dl class="dl-horizontal">
+				<dt>About</dt>
+				<dd>{{foundUser.info.userDescription}} <em data-ng-show="!foundUser.info.userDescription" class="text-muted">{{foundUser.info.displayName}} hasn't written a description yet.</em></dd>
+
+				<dt>School</dt>
+				<dd>{{foundUser.info.school}}</dd>
+
+				<dt>Class</dt>
+				<dd>{{foundUser.info.classCode}}</dd>
+
+				<dt>Gatorlink</dt>
+				<dd>{{foundUser.info.gatorlink}}</dd>
+			</dl>
+		</div>
+	</div>
+
+	<div class="panel panel-default hidden">
+		<div class="panel-heading">
+			<h2 class="panel-title">Galleries <span class="badge" data-ng-bind="foundUser.count"></span></h2>
+		</div>
+
+		<div class="panel-body">
+			<a href="#!/galleries"><img style="height: 75px;"></a>
+			<a href="#!/galleries"><img style="height: 75px;"></a>
+			<a href="#!/galleries"><img style="height: 75px;"></a>
+		</div>
+	</div>
+
+	<div class="page-header">
+		<h2>
+			Insects <small>{{foundUser.count}} total</small>
+			<span class="pull-right">
+				<a class="btn btn-default" data-ng-href="/#!/insects/create" data-ng-show="user._id == foundUser.info._id">
+					<i class="glyphicon glyphicon-plus"></i> New Insect
+				</a>
+				<a class="btn btn-default" data-ng-href="/#!/insects/map/user/{{foundUser.info._id}}">
+					<i class="glyphicon glyphicon-globe"></i> Map
+				</a>
+			</span>
+		</h2>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-6 col-md-4 col-lg-3" data-ng-repeat="insect in foundUser.insects">
+			<div class="thumbnail">
+				<a data-ng-href="#!/insects/{{insect._id}}">
+					<img style="max-height: 350px;" class="center-block" ng-src="{{insect.image.small}}">
+				</a>
+				<div class="caption clearfix">
+					<h3><a data-ng-href="#!/insects/{{insect._id}}" data-ng-bind="insect.name"></a></h3>
+					<p>
+						<span data-ng-bind="insect.dateFound | date:'longDate'"></span>
+					</p>
+					<a data-ng-href="#!/insects/{{insect._id}}" class="btn btn-primary pull-right" role="button">View</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="text-center" data-ng-if="foundUser.count > 12">
+		<a data-ng-href="#!/insects/user/{{foundUser.info._id}}" class="btn btn-primary" role="button">View All Insects</a>
+	</div>
+
+	<div class="alert alert-warning text-center" data-ng-if="foundUser.count < 1">
+		{{foundUser.info.displayName}} hasn't added any insects yet.
+	</div>
+
+	<div class="page-header">
+		<h2>
+			Collections <small>{{collections.length}} total</small>
+			<small data-ng-show="collectionsloading"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></small>
+			<span class="pull-right">
+				<a class="btn btn-default" data-ng-href="/#!/collection/create" data-ng-show="user._id == foundUser.info._id">
+					<i class="glyphicon glyphicon-plus"></i> New Collection
+				</a>
+			</span>
+		</h2>
+	</div>
+
+	<div class="row">
+		<div data-ng-repeat="collection in collections" class="col-sm-6 col-md-4 col-lg-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">
+						<a data-ng-href="#!/collections/{{collection._id}}" data-ng-bind="collection.name"></a>
+					</h2>
+				</div>
+
+				<div class="panel-body">
+					<div>
+						<img data-ng-repeat="insect in collection.caught" style="height: 50px; width: 50px;" ng-src="{{insect.image.small}}">
+					</div>
+					<div class="clearfix" style="margin-top: 15px;">
+						<span class="pull-left">
+							<span data-ng-show="collection.user.displayName" style="display: block;">Created by <a data-ng-href="#!/profile/{{collection.user._id}}">{{collection.user.displayName}}</a></span>
+							<span data-ng-bind="collection.created | date:'longDate'"></span>
+						</span>
+						<a data-ng-href="#!/collections/{{collection._id}}" class="btn btn-primary pull-right" role="button">View</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="alert alert-warning text-center" data-ng-if="collections.length < 1">
+		{{foundUser.info.displayName}} hasn't made any collections yet.
+	</div>
+</section>
